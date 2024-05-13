@@ -1,0 +1,535 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: 'Epilogue';
+  background-color: #014DFE;
+  margin: 0;
+  color: white;
+  font-weight: 300;
+}
+
+.container {
+  min-height: 100vh;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  color: white;
+  font-size: 18px;
+  border-bottom: 3px solid white;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  padding: 0px 20px;
+}
+
+nav ul li:hover {
+  font-weight: bold;
+}
+
+.logo {
+  margin-right: auto;
+  margin-left: 15px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 100px 0;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  min-height: 150px;
+  font-size: 100%;
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  min-height: 150px;
+  font-size: 100%;
+  text-align: center;
+}
+
+.speed {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 55vh;
+  object-fit: cover;
+}
+
+.loginButton a{
+  font-weight: bold;
+}
+
+.loginButton a:hover {
+  color: black;
+}
+
+.box h1 {
+  font-size: 250%;
+}
+
+.contact {
+  min-height: 70vh; /* Zajmuje 70% wysokości widoku */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.dane {
+  flex: 1; /* Zajmuje elastycznie dostępną przestrzeń */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 5%;
+}
+
+.contactBox {
+  flex: 1; /* Zajmuje elastycznie dostępną przestrzeń */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5%;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap; /* Pozwala elementom na łamanie się na nowe linie */
+  justify-content: center;
+  align-items: center;
+}
+
+.dane,
+.contactBox {
+  flex: 1; /* Elastyczne dopasowanie do dostępnej przestrzeni */
+  padding: 2%;
+}
+
+.contactForm {
+  text-align: center;
+}
+
+.contact h1 {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.dane p {
+  margin-bottom: 5px;
+}
+
+iframe {
+  width: 100%;
+  min-height: 450px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 3px solid white;
+}
+
+.contactBox input {
+  margin: 5px;
+  border-radius: 15px;
+  border: 2px solid white;
+  padding: 0px 10px;
+  height: 35px;
+  width: 92%;
+  
+}
+
+textarea {
+  margin: 5px;
+  border-radius: 15px;
+  border: 2px solid white;
+  padding: 10px 10px;
+  height: 500px;
+  width: 92%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  resize: none;
+}
+
+.cont {
+  display: flex;
+}
+
+#mail,
+#phone {
+  flex: 1;
+  margin-right: 5px;
+  width: calc(50% - 2.5px);
+}
+
+#phone {
+  margin-right: 0;
+}
+
+.wyslij {
+  margin: 0 auto;
+  display: block;
+  height: 40px;
+  width: 200px;
+  border-radius: 15px;
+  padding: 0px 10px;
+  font-weight: bold;
+  border: 2px solid white;
+  background-color: #014DFE;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 15px;
+}
+
+.wyslij:hover {
+  background-color: #0A5FF8;
+  color: #EFEFEF;
+}
+
+.about {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.aboutHeader,
+.aboutText {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.aboutText {
+  width: 60%;
+}
+
+.aboutHeader h1 {
+  font-size: 50px;
+}
+
+.opinion {
+  background-color: white;
+  border-radius: 15px;
+  color: black;
+  padding: 15px;
+  margin: 15px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 7px;
+}
+
+.user h2 {
+  font-size: 13px;
+}
+
+.offerHeader {
+  margin-top: 20px;
+}
+
+.allOffers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.offer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: black;
+  width: 320px;
+  height: 300px;
+  padding: 20px 20px 0px 20px;
+  margin: 40px;
+}
+
+.offer img {
+  margin-bottom: 18px;
+}
+
+.carTypeSelector {
+  border-radius: 25px;
+  border: 2px solid white;
+  padding: 0px 10px;
+  height: 45px;
+  width: 200px;
+  background-color: white;
+  color: black;
+}
+
+.filters{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.rezerwacja {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  width: 100%;
+}
+
+.rezerwacja a{
+  color: #0A5FF8;
+  font-weight: 400;
+}
+
+.rezerwacja a:hover{
+  text-decoration: underline;
+}
+
+.offerBottom {
+  background-color: whitesmoke;
+  width: 100%;
+  border-top: 2px solid lightgray;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.offerRight {
+  text-align: right;
+}
+
+.offer h3 {
+  margin-bottom: 10px;
+}
+
+.offer p {
+  margin-top: 5px;
+}
+
+.dodaj {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.dodaj h1 {
+  margin-bottom: 10px;
+}
+
+.dodaj input {
+  margin: 5px;
+  border-radius: 15px;
+  border: 2px solid white;
+  padding: 0px 10px;
+  height: 35px;
+  width: 200px;
+}
+
+.dodajOferte {
+  border-radius: 15px;
+  border: 2px solid white;
+  padding: 0px 10px;
+  height: 35px;
+  width: 200px;
+  background-color: #0A5FF8;
+  color: white;
+}
+
+.containerr {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 20px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 1100px) {
+  .about {
+      font-size: 85%;
+  }
+
+  .aboutHeader h1 {
+      font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+      width: 100%;
+      align-items: center;
+  }
+
+  nav {
+      font-size: 90%;
+  }
+
+  .box {
+      width: 80%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .box1 {
+      width: 80%;
+  }
+
+  .home {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      margin: 40px 0;
+      align-items: center;
+  }
+
+  .speed {
+      position: flex;
+      width: 100%;
+      height: 30vh;
+      object-fit: cover;
+  }
+
+  .contact {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .dane,
+  .contactBox {
+      flex-wrap: wrap;
+      width: 100%;
+      text-align: center;
+      padding: 0px;
+      margin-top: 50px;
+  }
+
+  iframe {
+      display: block;
+      margin: 0 auto;
+      width: 70%;
+      min-height: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      border: 3px solid white;
+  }
+
+  .about {
+      height: 50vh;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+  }
+
+  .aboutHeader,
+  .aboutText {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 30px;
+  }
+
+  .filters{
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+  }
+
+  nav ul li {
+      padding: 0px 10px;
+  }
+
+  .carTypeSelector {
+    margin-top: 20px;
+  }
+}
