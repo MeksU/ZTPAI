@@ -54,7 +54,7 @@ const Offers = () => {
                 <img src={`${process.env.PUBLIC_URL}/img/${offer.image}`} alt="offer" style={{ width: 300, height: 168, objectFit: 'cover' }} />
                 <div className={styles.rezerwacja}>
                 <h3 style={{ textTransform: 'uppercase' }}>{offer.model}</h3>
-                <a href="#" style={{ color: 'green', textDecoration: 'none' }}>
+                <a style={{ color: 'green', textDecoration: 'none' }}>
                 Zarezerwuj
                 </a>
                 </div>

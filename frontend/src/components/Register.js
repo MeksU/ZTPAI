@@ -11,15 +11,50 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [messages, setMessages] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Tutaj można dodać logikę walidacji i rejestracji
+    setMessages([]);
+
+    if (!name || !surname || !email || !password || !confirmPassword) {
+      setMessages(['Wypełnij wszystkie pola formularza.']);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      setMessages(['Podaj poprawny adres email.']);
+      return;
+    }
+    if (password.length < 8) {
+      setMessages(['Hasło musi mięc minimum 8 znaków.']);
+      return;
+    }
     if (password !== confirmPassword) {
       setMessages(['Hasła nie są takie same.']);
       return;
     }
-    console.log("Rejestracja:", { name, surname, email, password });
-    navigate('/');  // Przekierowanie po pomyślnej rejestracji
+
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, surname, mail: email, password, type: 'user' })
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        setMessages([`${error}`]);
+        return;
+      }
+
+      setMessages(['Pomyślnie zarejestrowano']);
+      navigate('/login');
+    } catch (error) {
+      setMessages([error.message]);
+    }
   };
 
   return (

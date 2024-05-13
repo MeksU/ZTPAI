@@ -1,36 +1,52 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import Home from './components/Home';
 import Login from './components/Login';
 import Offers from './components/Offers';
 import Register from './components/Register';
 import Contact from './components/Contact';
+import Logout from './components/Logout'; // Import Logout component
 import styles from './index.module.css';
 import loginStyles from './login.module.css';
+import { decodeJWT } from './utils';
 
 function App() {
-  const userType = '';
-  const user = false;
+  const [userType, setUserType] = useState('');
+  const [userId, setUserId] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decodedToken = decodeJWT(token);
+        console.log(decodedToken)
+        setUserType(decodedToken.userType);
+        setUserId(decodedToken.userId);
+        setLoggedIn(true);
+      } catch (error) {
+        console.error('Błąd dekodowania tokena:', error);
+      }
+    }
+  }, []);
 
   return (
     <Router>
       <div>
         <Routes>
-          <Route element={<LayoutWithoutNavbar />}>
-            <Route path="/login" element={<Login />} />
+          <Route element={<LayoutWithoutNavbar loggedIn={loggedIn} />}>
+            <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setUserType={setUserType} setUserId={setUserId} />} />
             <Route path="/register" element={<Register />} />
           </Route>
 
-          <Route element={<LayoutWithNavbar userType={userType} user={user} />}>
+          <Route element={<LayoutWithNavbar userType={userType} userId={userId} loggedIn={loggedIn} />}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<Home />} />
             <Route path="/offers" element={<Offers />} />
             {userType === 'user' && <Route path="/reservations" element={<Home />} />}
             <Route path="/contact" element={<Contact />} />
-            {userType === 'admin' && <Route path="/admin" element={<Home />} />}
-            {user ? <Route path="/logout" element={<Home />} /> : <Route path="/login" element={<Home />} />}
+            {loggedIn ? <Route path="/logout" element={<Logout setLoggedIn={setLoggedIn} setUserType={setUserType} setUserId={setUserId} />} /> : <Route path="/login" element={<Home />} />}
           </Route>
         </Routes>
       </div>
@@ -38,12 +54,11 @@ function App() {
   );
 }
 
-
-function LayoutWithNavbar({ userType, user }) {
+function LayoutWithNavbar({ userType, userId, loggedIn }) {
   return (
     <>
       <div className={styles.container}>
-        <Navbar userType={userType} user={user} />
+        <Navbar userType={userType} userId={userId} loggedIn={loggedIn} />
         <Outlet />
       </div>
       <footer className={styles.footer}>
@@ -57,10 +72,11 @@ function LayoutWithNavbar({ userType, user }) {
   );
 }
 
-function LayoutWithoutNavbar() {
+function LayoutWithoutNavbar({ loggedIn }) {
   return (
     <div className={loginStyles.container}>
       <Outlet />
+      {loggedIn && <Navigate to="/" replace />}
     </div>
   );
 }

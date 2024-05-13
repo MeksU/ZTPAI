@@ -1,17 +1,42 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { decodeJWT } from '../utils';
 import styles from '../login.module.css';
 
-const Login = () => {
+const Login = ({ setLoggedIn, setUserType, setUserId }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [messages, setMessages] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Logowanie:", { email, password });
-    navigate('/');
+    setMessages([]);
+
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ mail: email, password })
+      });
+
+      if (!response.ok) {
+        setMessages(["Niepoprawny login lub hasło!"]);
+        return;
+      }
+
+      const data = await response.json();
+      localStorage.setItem('token', data.jwt);
+      const decodedToken = decodeJWT(data.jwt);
+      setUserType(decodedToken.userType);
+      setUserId(decodedToken.userId);
+      setLoggedIn(true);
+      navigate('/');
+    } catch (error) {
+      setMessages(["Niepoprawny login lub hasło!"]);
+    }
   };
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../index.module.css';
 
-const Navbar = ({ userType, user }) => {
+const Navbar = ({ userType, userId, loggedIn }) => {
   return (
     <nav>
       <div className={styles.logo}>
@@ -21,7 +21,7 @@ const Navbar = ({ userType, user }) => {
           </li>
         )}
         <li>
-          {user ? (
+          {loggedIn ? (
             <Link to="/logout" className={`${styles.navLink} ${styles.loginButton}`}>Wyloguj</Link>
           ) : (
             <Link to="/login" className={`${styles.navLink} ${styles.loginButton}`}>Zaloguj</Link>

@@ -30,10 +30,8 @@ public class OfferController {
 
     @PostMapping
     public ResponseEntity<Offer> createOffer(@RequestBody Offer offer) {
-        // Wywołujemy serwis, aby stworzyć ofertę na podstawie przekazanych danych
         Offer createdOffer = offerService.createOffer(offer);
 
-        // Zwracamy status 201 Created oraz utworzoną ofertę w ciele odpowiedzi
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOffer);
     }
 }
