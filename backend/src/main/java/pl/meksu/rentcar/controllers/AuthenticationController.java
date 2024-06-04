@@ -44,7 +44,7 @@ public class AuthenticationController {
 
             User user = userService.getUserByMail(loginRequest.getMail()).orElseThrow(() -> new RuntimeException("User not found"));
 
-            String jwt = jwtUtil.generateToken(String.valueOf(user.getId()), user.getType());
+            String jwt = jwtUtil.generateToken(user.getMail(),String.valueOf(user.getId()), user.getType());
             Map<String, String> response = new HashMap<>();
             response.put("jwt", jwt);
             response.put("userId", String.valueOf(user.getId()));

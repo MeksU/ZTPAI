@@ -6,7 +6,9 @@ import Login from './components/Login';
 import Offers from './components/Offers';
 import Register from './components/Register';
 import Contact from './components/Contact';
-import Logout from './components/Logout'; // Import Logout component
+import Logout from './components/Logout';
+import AdminPanel from './components/AdminPanel';
+import NotFound from './components/NotFound';
 import styles from './index.module.css';
 import loginStyles from './login.module.css';
 import { decodeJWT } from './utils';
@@ -43,10 +45,12 @@ function App() {
           <Route element={<LayoutWithNavbar userType={userType} userId={userId} loggedIn={loggedIn} />}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<Home />} />
+            <Route path="/admin" element={<AdminPanel />} />
             <Route path="/offers" element={<Offers />} />
             {userType === 'user' && <Route path="/reservations" element={<Home />} />}
             <Route path="/contact" element={<Contact />} />
             {loggedIn ? <Route path="/logout" element={<Logout setLoggedIn={setLoggedIn} setUserType={setUserType} setUserId={setUserId} />} /> : <Route path="/login" element={<Home />} />}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </div>

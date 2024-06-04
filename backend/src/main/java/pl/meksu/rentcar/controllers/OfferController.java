@@ -31,7 +31,12 @@ public class OfferController {
     @PostMapping
     public ResponseEntity<Offer> createOffer(@RequestBody Offer offer) {
         Offer createdOffer = offerService.createOffer(offer);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOffer);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteOffer(@PathVariable int id) {
+        offerService.deleteOffer(id);
+        return ResponseEntity.noContent().build();
     }
 }

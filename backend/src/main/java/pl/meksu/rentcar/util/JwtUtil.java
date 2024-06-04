@@ -15,8 +15,9 @@ public class JwtUtil {
     private String secretKey = "my_secret_key_567_212";
     private Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
-    public String generateToken(String userId, String userType) {
+    public String generateToken(String username, String userId, String userType) {
         return JWT.create()
+                .withSubject(username)
                 .withClaim("userId", userId)
                 .withClaim("userType", userType)
                 .withIssuedAt(new Date())

@@ -381,6 +381,7 @@ textarea {
 
 .dodaj h1 {
   margin-bottom: 10px;
+  font-size: 250%;
 }
 
 .dodaj input {
@@ -392,6 +393,10 @@ textarea {
   width: 200px;
 }
 
+.addForm {
+  margin-top: 20px;
+}
+
 .dodajOferte {
   border-radius: 15px;
   border: 2px solid white;
@@ -400,12 +405,26 @@ textarea {
   width: 200px;
   background-color: #0A5FF8;
   color: white;
+  margin-bottom: 70px;
 }
 
 .containerr {
   margin: 0 auto;
   max-width: 960px;
   padding: 20px;
+}
+
+.pageNotFound {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.pageNotFound h1 {
+  margin-bottom: 20px;
+}
+
+.pageNotFound h3 {
+  font-size: 1.2rem;
 }
 
 body {
@@ -427,6 +446,10 @@ body {
 
 
 @media only screen and (max-width: 1100px) {
+  nav {
+    font-size: 90%;
+  }
+
   .about {
       font-size: 85%;
   }

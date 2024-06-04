@@ -28,4 +28,12 @@ public class OfferService {
     public Offer createOffer(Offer offer) {
         return offerRepository.save(offer);
     }
+
+    public void deleteOffer(int id) {
+        if (offerRepository.existsById(id)) {
+            offerRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Offer not found");
+        }
+    }
 }
