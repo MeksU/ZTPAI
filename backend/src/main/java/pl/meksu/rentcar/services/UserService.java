@@ -59,4 +59,9 @@ public class UserService {
         logger.info("User authenticated successfully with email: " + mail);
         return "User authenticated successfully";
     }
+
+    public Optional<User> getUserById(int id) {
+        logger.info("Fetching user by ID: " + id);
+        return userRepository.findById(id);
+    }
 }

@@ -33,7 +33,4 @@ public class Reservation {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date endDate;
-
-    @Column(nullable = false, length = 20)
-    private String status;
 }

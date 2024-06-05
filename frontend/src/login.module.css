@@ -52,7 +52,7 @@ a {
     text-align: center;
 }
 
-input {
+.inputLogin {
     margin: 5px;
     border-radius: 20px;
     border: 2px solid white;

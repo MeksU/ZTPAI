@@ -32,7 +32,7 @@ const Offers = () => {
         <>
         <h1 className={styles.offerHeader} style={{ fontSize: '50px', textAlign: 'center' }}>Nasza oferta</h1>
         <div className={styles.filters}>
-            <input type="text" placeholder="Wyszukaj model" value={searchQuery} onChange={handleSearchInputChange} />
+            <input type="text" placeholder="Wyszukaj model" value={searchQuery} onChange={handleSearchInputChange} className={styles.inputOffer}/>
             <select value={filterType} onChange={handleTypeChange} className={styles.carTypeSelector}>
             <option value="">Wybierz typ pojazdu</option>
             <option value="SUV">SUV</option>

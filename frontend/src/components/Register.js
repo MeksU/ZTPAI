@@ -81,6 +81,7 @@ const Register = () => {
             placeholder="Imię"
             value={name}
             onChange={e => setName(e.target.value)}
+            className={styles.inputLogin}
           /><br />
           <input
             name="surname"
@@ -89,6 +90,7 @@ const Register = () => {
             placeholder="Nazwisko"
             value={surname}
             onChange={e => setSurname(e.target.value)}
+            className={styles.inputLogin}
           /><br />
           <input
             name="mail"
@@ -97,6 +99,7 @@ const Register = () => {
             placeholder="Adres E-mail"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            className={styles.inputLogin}
           /><br />
           <input
             name="password"
@@ -105,6 +108,7 @@ const Register = () => {
             placeholder="Podaj hasło"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            className={styles.inputLogin}
           /><br />
           <input
             name="password2"
@@ -113,6 +117,7 @@ const Register = () => {
             placeholder="Potwierdź hasło"
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
+            className={styles.inputLogin}
           /><br />
           <button type="submit" className={styles.rejestracja}>ZAREJESTRUJ</button><br />
           <a href="/login" style={{ textDecoration: 'underline' }}>Masz już konto? Zaloguj się!</a>

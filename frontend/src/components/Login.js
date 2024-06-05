@@ -63,6 +63,7 @@ const Login = ({ setLoggedIn, setUserType, setUserId }) => {
             placeholder="Adres E-mail" 
             value={email}
             onChange={e => setEmail(e.target.value)}
+            className={styles.inputLogin}
           /><br />
           <input 
             name="password" 
@@ -71,6 +72,7 @@ const Login = ({ setLoggedIn, setUserType, setUserId }) => {
             placeholder="Hasło"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            className={styles.inputLogin}
           /><br />
           <button type="submit" className={styles.zaloguj}>ZALOGUJ</button><br />
           <button type="button" onClick={() => navigate('/register')} className={styles.rejestracja}>ZAREJESTRUJ</button><br />

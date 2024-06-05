@@ -109,7 +109,7 @@ a {
 }
 
 .contact {
-  min-height: 70vh; /* Zajmuje 70% wysokości widoku */
+  min-height: 70vh; 
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -118,7 +118,7 @@ a {
 }
 
 .dane {
-  flex: 1; /* Zajmuje elastycznie dostępną przestrzeń */
+  flex: 1; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -126,8 +126,12 @@ a {
   padding: 5%;
 }
 
+.loggedOutMessage {
+  margin-top: 20px;
+}
+
 .contactBox {
-  flex: 1; /* Zajmuje elastycznie dostępną przestrzeń */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -150,6 +154,7 @@ a {
 }
 
 .contactForm {
+  min-width: 350px;
   text-align: center;
 }
 
@@ -176,7 +181,6 @@ iframe {
   padding: 0px 10px;
   height: 35px;
   width: 92%;
-  
 }
 
 textarea {
@@ -384,7 +388,7 @@ textarea {
   font-size: 250%;
 }
 
-.dodaj input {
+.zwyklyInput {
   margin: 5px;
   border-radius: 15px;
   border: 2px solid white;
@@ -393,8 +397,22 @@ textarea {
   width: 200px;
 }
 
+.inputOffer {
+  margin: 5px;
+  border-radius: 30px;
+  border: 2px solid white;
+  padding: 0px 10px;
+  height: 35px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .addForm {
   margin-top: 20px;
+}
+
+input[type="file"] {
+  margin: 10px 0;
 }
 
 .dodajOferte {
@@ -554,5 +572,11 @@ body {
 
   .carTypeSelector {
     margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  nav {
+      font-size: 75%;
   }
 }
