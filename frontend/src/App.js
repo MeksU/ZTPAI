@@ -13,6 +13,7 @@ import styles from './index.module.css';
 import loginStyles from './login.module.css';
 import { decodeJWT } from './utils';
 import Reservations from './components/Reservations';
+import OfferDetails from './components/OfferDetails';
 
 function App() {
   const [userType, setUserType] = useState('');
@@ -48,6 +49,7 @@ function App() {
             <Route path="/about" element={<Home />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/offers" element={<Offers />} />
+            <Route path="/offers/:offerId" element={<OfferDetails />} />
             <Route path="/reservations" element={<Reservations />} />
             {userType === 'user' && <Route path="/reservations" element={<Home />} />}
             <Route path="/contact" element={<Contact />} />

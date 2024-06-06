@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../index.module.css';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
+import { decodeJWT } from '../utils';
 
 const Offers = () => {
     const [offers, setOffers] = useState([]);
     const [filterType, setFilterType] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchOffers = async () => {
@@ -20,12 +24,24 @@ const Offers = () => {
         fetchOffers();
     }, []);
 
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            const decodedToken = decodeJWT(token);
+            setIsLoggedIn(!!decodedToken);
+        }
+    }, []);
+
     const handleTypeChange = (event) => {
         setFilterType(event.target.value);
     };
 
     const handleSearchInputChange = (event) => {
         setSearchQuery(event.target.value);
+    };
+
+    const handleReservationClick = (offerId) => {
+        navigate(`/offers/${offerId}`);
     };
 
     return (
@@ -54,9 +70,16 @@ const Offers = () => {
                 <img src={`${process.env.PUBLIC_URL}/img/${offer.image}`} alt="offer" style={{ width: 300, height: 168, objectFit: 'cover' }} />
                 <div className={styles.rezerwacja}>
                 <h3 style={{ textTransform: 'uppercase' }}>{offer.model}</h3>
-                <a style={{ color: 'green', textDecoration: 'none' }}>
-                Zarezerwuj
-                </a>
+                {isLoggedIn && (
+                    <a style={{ color: 'green', textDecoration: 'none', cursor: 'pointer' }} onClick={() => handleReservationClick(offer.id)}>
+                        Zarezerwuj
+                    </a>
+                )}
+                {!isLoggedIn && (
+                    <a style={{ color: 'green', textDecoration: 'none', cursor: 'pointer' }} onClick={() => handleReservationClick(offer.id)}>
+                        Szczegóły
+                    </a>
+                )}
                 </div>
                 <div className={styles.offerBottom}>
                 <div className={styles.offerLeft}>

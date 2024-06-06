@@ -142,14 +142,14 @@ a {
 
 .contact {
   display: flex;
-  flex-wrap: wrap; /* Pozwala elementom na łamanie się na nowe linie */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
 .dane,
 .contactBox {
-  flex: 1; /* Elastyczne dopasowanie do dostępnej przestrzeni */
+  flex: 1;
   padding: 2%;
 }
 
@@ -230,6 +230,12 @@ textarea {
 .wyslij:hover {
   background-color: #0A5FF8;
   color: #EFEFEF;
+}
+
+.resMess {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
 }
 
 .about {
@@ -371,6 +377,69 @@ textarea {
 
 .offer p {
   margin-top: 5px;
+}
+
+.offerDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailsLeft,
+.detailsRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5%;
+}
+
+.detailHeader {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.detailsImg {
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  min-width: 400px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailsInfo{
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: boldert;
+  font-size: 20px;
+}
+
+.rezerwujButton,
+.loginMessage {
+  margin: 20px 0;
+}
+
+.detailsInfo p {
+  margin: 5px 0;
+}
+
+.detailsRight h3 {
+  margin: 30px 0 15px 0;
 }
 
 .dodaj {

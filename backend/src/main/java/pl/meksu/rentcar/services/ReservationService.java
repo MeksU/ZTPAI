@@ -39,6 +39,10 @@ public class ReservationService {
         return reservationRepository.findByUserId(userId);
     }
 
+    public List<Reservation> getReservationsByOfferId(int offerId) {
+        return reservationRepository.findByOfferId(offerId);
+    }
+
     public Reservation createReservation(ReservationDTO reservationDTO) {
         User user = userRepository.findById(reservationDTO.getUser())
                 .orElseThrow(() -> new RuntimeException("User not found"));

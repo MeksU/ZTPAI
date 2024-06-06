@@ -63,15 +63,17 @@ const ReservationList = () => {
         <>
         <h1 className={styles.offerHeader} style={{ fontSize: '50px', textAlign: 'center' }}>Twoje rezerwacje</h1>
         <div className={styles.allOffers}>
-            {message && <p>{message}</p>}
+            <div className={styles.resMess}>
+                {message && <p>{message}</p>}
+            </div>
             {reservations.map((reservation) => (
             <div key={reservation.id} className={styles.offer}>
                 <img src={`${process.env.PUBLIC_URL}/img/${reservation.offer.image}`} alt="offer" style={{ width: 300, height: 168, objectFit: 'cover' }} />
                 <div className={styles.rezerwacja}>
                 <h3 style={{ textTransform: 'uppercase' }}>{reservation.offer.model}</h3>
-                <p>Od: {new Date(reservation.startDate).toLocaleDateString()}</p>
-                <p>Do: {new Date(reservation.endDate).toLocaleDateString()}</p>
-                <button onClick={() => handleDelete(reservation.id)} className={styles.usunButton}>Usuń</button>
+                <a onClick={() => handleDelete(reservation.id)} style={{ color: 'red', textDecoration: 'none', cursor: 'pointer' }}>
+                    Usuń
+                </a>
                 </div>
                 <div className={styles.offerBottom}>
                 <div className={styles.offerLeft}>
@@ -79,8 +81,8 @@ const ReservationList = () => {
                     <p>Ilość miejsc: {reservation.offer.seats}</p>
                 </div>
                 <div className={styles.offerRight}>
-                    <p style={{ color: '#2CB67D', fontWeight: 'bold' }}>{reservation.offer.price} zł</p>
-                    <p style={{ fontSize: '80%' }}>/dzień</p>
+                    <p style={{fontWeight: 'bold' }}>Od: {new Date(reservation.startDate).toLocaleDateString()}</p>
+                    <p style={{fontWeight: 'bold' }}>Do: {new Date(reservation.endDate).toLocaleDateString()}</p>
                 </div>
                 </div>
             </div>
