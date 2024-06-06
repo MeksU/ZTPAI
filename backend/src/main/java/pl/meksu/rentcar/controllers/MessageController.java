@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.meksu.rentcar.dto.MessageDTO;
 import pl.meksu.rentcar.models.Message;
 import pl.meksu.rentcar.models.User;
+import pl.meksu.rentcar.services.MessageProducer;
 import pl.meksu.rentcar.services.MessageService;
 import pl.meksu.rentcar.services.UserService;
 
@@ -22,9 +23,13 @@ public class MessageController {
     @Autowired
     private final UserService userService;
 
-    public MessageController(MessageService messageService, UserService userService) {
+    @Autowired
+    private final MessageProducer messageProducer;
+
+    public MessageController(MessageService messageService, UserService userService, MessageProducer messageProducer) {
         this.messageService = messageService;
         this.userService = userService;
+        this.messageProducer = messageProducer;
     }
 
     @GetMapping
@@ -47,6 +52,7 @@ public class MessageController {
             message.setUser(user);
             message.setSentDate(messageDTO.getSentDate());
             Message createdMessage = messageService.createMessage(message);
+
             return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
         } catch (Exception e) {
             e.printStackTrace();

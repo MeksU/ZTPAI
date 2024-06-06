@@ -14,6 +14,11 @@ spring:
         globally_quoted_identifiers: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   servlet:
     multipart:
       enabled: true

@@ -423,8 +423,18 @@ textarea {
   padding: 20px;
 }
 
+.pDetail{
+  margin: 20px 0 10px 0;
+}
+
 .rezerwujButton{
   margin-bottom: 20px;
+}
+
+.resFilters{
+  width: 100%;
+  text-align: right;
+  margin-right: 20px;
 }
 
 .loginMessage {

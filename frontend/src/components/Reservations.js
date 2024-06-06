@@ -8,6 +8,7 @@ const ReservationList = () => {
     const [reservations, setReservations] = useState([]);
     const [message, setMessage] = useState('');
     const [userId, setUserId] = useState(null);
+    const [showActiveOnly, setShowActiveOnly] = useState(false);
 
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
@@ -54,19 +55,37 @@ const ReservationList = () => {
                 setMessage('Rezerwacja została usunięta.');
             } catch (error) {
                 console.error('Failed to delete reservation:', error);
-                setMessage('Failed to delete reservation');
+                setMessage('Błąd! Nie udało się usunąć rezerwacji.');
             }
         }
     };
 
+    const handleCheckboxChange = () => {
+        setShowActiveOnly(!showActiveOnly);
+    };
+
+    const filteredReservations = showActiveOnly
+        ? reservations.filter(reservation => new Date(reservation.endDate) >= new Date())
+        : reservations;
+
     return (
         <>
         <h1 className={styles.offerHeader} style={{ fontSize: '50px', textAlign: 'center' }}>Twoje rezerwacje</h1>
+        <div className={styles.resFilters}>
+            <label>
+                Pokaż tylko aktywne rezerwacje &nbsp;
+                <input 
+                    type="checkbox" 
+                    checked={showActiveOnly} 
+                    onChange={handleCheckboxChange} 
+                />
+            </label>
+        </div>
         <div className={styles.allOffers}>
             <div className={styles.resMess}>
                 {message && <p>{message}</p>}
             </div>
-            {reservations.map((reservation) => (
+            {filteredReservations.map((reservation) => (
             <div key={reservation.id} className={styles.offer}>
                 <img src={`${process.env.PUBLIC_URL}/img/${reservation.offer.image}`} alt="offer" style={{ width: 300, height: 168, objectFit: 'cover' }} />
                 <div className={styles.rezerwacja}>

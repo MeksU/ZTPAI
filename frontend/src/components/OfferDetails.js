@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Calendar from 'react-calendar';
+import { useNavigate } from 'react-router-dom';
 import 'react-calendar/dist/Calendar.css';
 import styles from '../index.module.css';
 import { decodeJWT } from '../utils';
@@ -14,6 +15,7 @@ const OfferDetails = () => {
     const [message, setMessage] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const token = localStorage.getItem('token');
+    const navigate = useNavigate();
 
     const fetchReservations = async () => {
         try {
@@ -43,27 +45,31 @@ const OfferDetails = () => {
     }, [offerId, token]);
 
     const handleDateChange = (dates) => {
-        const [start, end] = dates;
-        const isInvalidRange = reservations.some(reservation => {
-            const resStart = new Date(reservation.startDate);
-            const resEnd = new Date(reservation.endDate);
-            return (start <= resEnd && end >= resStart);
-        });
-
-        if (!isInvalidRange) {
+        if (Array.isArray(dates)) {
             setSelectedDates(dates);
         } else {
-            setMessage('Wybrany zakres zawiera zarezerwowane daty. Wybierz inny zakres.');
+            setSelectedDates([dates, dates]);
         }
     };
 
     const handleReservation = async () => {
-        if (!selectedDates || selectedDates.length !== 2) {
+        if (!selectedDates || selectedDates.length === 0) {
             setMessage('Proszę wybrać prawidłowy zakres dat.');
             return;
         }
 
         const [startDate, endDate] = selectedDates;
+        const isInvalidRange = reservations.some(reservation => {
+            const resStart = new Date(reservation.startDate);
+            const resEnd = new Date(reservation.endDate);
+            return (startDate <= resEnd && endDate >= resStart);
+        });
+
+        if (isInvalidRange) {
+            setMessage('Wybierz inny zakres.');
+            return;
+        }
+
         const decodedToken = decodeJWT(token);
         const userId = decodedToken.userId;
 
@@ -80,7 +86,7 @@ const OfferDetails = () => {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            setMessage('Rezerwacja zakończona sukcesem!');
+            setMessage('Pomyślnie zarezerwowano pojazd!');
             setSelectedDates([]);
             fetchReservations();
         } catch (error) {
@@ -136,6 +142,11 @@ const OfferDetails = () => {
                             <p className={styles.loginMessage}>Musisz być zalogowany, aby dokonać rezerwacji.</p>
                         )}
                         {message && <p>{message}</p>}
+                        <p className={styles.pDetail}>Chcesz zarezerwować pojazd na dłużej?</p>
+                        <a style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/contact')}>
+                            Napisz do nas
+                        </a>
+    
                     </div>
                 </>
             )}

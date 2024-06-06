@@ -15,6 +15,9 @@ public class MessageService {
     @Autowired
     private final MessageRepository messageRepository;
 
+    @Autowired
+    private MessageProducer messageProducer;
+
     public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
@@ -28,7 +31,9 @@ public class MessageService {
     }
 
     public Message createMessage(Message message) {
-        return messageRepository.save(message);
+        Message savedMessage = messageRepository.save(message);
+        messageProducer.sendMessage(savedMessage);
+        return savedMessage;
     }
 
     public void deleteMessage(int id) {
