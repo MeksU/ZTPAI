@@ -413,33 +413,42 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.detailsInfo{
-  background-color: white;
-  border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: black;
-  font-weight: boldert;
+  font-weight: bolder;
   font-size: 20px;
 }
 
-.rezerwujButton,
+.detailsInfo{
+  text-align: left;
+  padding: 20px;
+}
+
+.rezerwujButton{
+  margin-bottom: 20px;
+}
+
 .loginMessage {
   margin: 20px 0;
 }
 
 .detailsInfo p {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .detailsRight h3 {
   margin: 30px 0 15px 0;
+}
+
+.customCalendar {
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  color: #222;
+  border: 1px solid #dcdcdc;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin: 20px;
 }
 
 .dodaj {
@@ -647,5 +656,10 @@ body {
 @media only screen and (max-width: 500px) {
   nav {
       font-size: 75%;
+  }
+
+  .customCalendar,
+  .detailsImg {
+    max-width: 400px;
   }
 }

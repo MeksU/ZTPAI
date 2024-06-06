@@ -101,18 +101,18 @@ const OfferDetails = () => {
                         <p className={styles.detailHeader}>{offer.model}</p>
                         <div className={styles.detailsImg}>
                             <img src={`${process.env.PUBLIC_URL}/img/${offer.image}`} alt="offer" style={{ width: '100%', height: 'auto', objectFit: 'cover', borderRadius: '30px' }} />
-                        </div>
-                        <div className={styles.detailsInfo}>
-                            <p>Typ: {offer.type}</p>
-                            <p>Pojemność silnika: {offer.engine}L</p>
-                            <p>Moc: {offer.power}KM</p>
-                            <p>Ilość miejsc: {offer.seats}</p>
-                            <p>Cena: {offer.price} zł/dzień</p>
+                            <div className={styles.detailsInfo}>
+                                <p>Typ: <b>{offer.type}</b></p>
+                                <p>Pojemność silnika: <b>{offer.engine}L</b></p>
+                                <p>Moc: <b>{offer.power}KM</b></p>
+                                <p>Ilość miejsc: <b>{offer.seats}</b></p>
+                                <p>Cena: <b>{offer.price} zł/dzień</b></p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.detailsRight}>
                         <p className={styles.detailHeader}>Zrezerwuj</p>
-                        <h3>Rezerwacje na najbliższe 3 miesiące</h3>
+                        <h3>Rezerwacje na najbliższe 3 miesiące:</h3>
                         <Calendar
                             selectRange
                             onChange={handleDateChange}
@@ -128,6 +128,7 @@ const OfferDetails = () => {
                                     });
                                 }
                             }}
+                            className={styles.customCalendar}
                         />
                         {isLoggedIn ? (
                             <button onClick={handleReservation} className={styles.rezerwujButton}>ZAREZERWUJ</button>
